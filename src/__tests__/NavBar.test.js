@@ -19,14 +19,14 @@ test("renders three <a> elements", () => {
 
 test("displays the correct text for each <a> element", () => {
   render(<NavBar />);
-  expect(screen.queryByText(/home/i)).toBeInTheDocument();
-  expect(screen.queryByText(/about/i)).toBeInTheDocument();
-  expect(screen.queryByText(/projects/i)).toBeInTheDocument();
+  expect(screen.queryByText(/home/i)).toHaveTextContent("Home");
+  expect(screen.queryByText(/about/i)).toHaveTextContent("About");
+  expect(screen.queryByText(/projects/i)).toHaveTextContent("Projects");
 });
 
 test("each <a> element has the correct href attribute", () => {
   render(<NavBar />);
-  expect(screen.queryByText(/home/i).href).toContain("#home");
-  expect(screen.queryByText(/about/i).href).toContain("#about");
-  expect(screen.queryByText(/projects/i).href).toContain("#projects");
+  expect(screen.getByText(/home/i)).toHaveAttribute("href", "#home");
+  expect(screen.getByText(/about/i)).toHaveAttribute("href", "#about");
+  expect(screen.getByText(/projects/i)).toHaveAttribute("href", "#projects");
 });
